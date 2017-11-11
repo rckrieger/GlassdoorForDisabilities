@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, jsonify, request, abort
+from flask import Flask, Blueprint, jsonify, request, abort, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 from datetime import datetime
@@ -150,6 +150,11 @@ class_strings = {'review': Review,
 
 
 # Routes
+@app.route('/')
+def index():
+    return render_template('public/index.html')
+
+
 @api.route('/<data_type>/all', methods=['GET'])
 def dump_all(data_type):
     dt = class_strings[data_type]
@@ -179,5 +184,5 @@ def add_class(data_type):
 
 if __name__ == '__main__':
     db.create_all()
-    app.register_blueprint(api, url_prefix='/api/v1')
+    app.register_blueprint(api, url_prefix='/api')
     app.run()
