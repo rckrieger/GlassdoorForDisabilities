@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
 
-class Job extends Component {
-  constructor(jobid) {
-    super(jobid);
+class Interviewreview extends Component {
+  constructor(reviewid) {
+    super(reviewid);
     //cal api here
     this.props = {
-      jobjson: props.person,
+      detailsjson: props.person,
     };
   }
 
