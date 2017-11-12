@@ -2,9 +2,10 @@
   "name": "accessibleentrance",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "flask": "^0.2.10",
     "jquery": "^3.2.1",
     "node-jq": "^0.7.0",
     "react": "^16.1.0",

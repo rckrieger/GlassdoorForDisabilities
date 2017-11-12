@@ -19,13 +19,7 @@ class Search extends Component {
 
       return (
         <div className="Search">
-        <StarRatingComponent
-          name="rate2"
-          editing={false}
-          starCount={5}
-          value={4.5}
-        />
-
+        
         </div>
       );
     }
