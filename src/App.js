@@ -22,7 +22,6 @@ class App extends Component {
           <h1 className="App-title">RampedUP</h1>
         </header>
         <Search/>
-          <Company/>
       </div>
     );
   }

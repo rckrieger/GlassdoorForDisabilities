@@ -90,24 +90,19 @@ class Company extends Component {
       accessibilityAttitudes:0,
 
     };
-  //  this.componentDidMount = this.componentDidMount.bind(this);
-  //  this.render = this.render.bind(this);
   }
-  //    {console.log(this.state.companyName)}
-
-  render() {
-    return (
-      <div id="layout-content" className="layout-content-wrapper">
-      <h3>{this.state.companyName}</h3>
-        <h3>{this.state.teamEnvironment}</h3>
-        <h3>{this.state.careerGrowth}</h3>
-        <h3>{this.state.accessibilityAttitudes}</h3>
-        <h3>{this.state.overAllScore}</h3>
-
-      <a href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
-      </div>
-    );
-
-  }
+  //render() {
+    // return (
+    //   <div id="layout-content" className="layout-content-wrapper">
+    //   <h3>{this.state.companyName}</h3>
+    //     <h3>{this.state.teamEnvironment}</h3>
+    //     <h3>{this.state.careerGrowth}</h3>
+    //     <h3>{this.state.accessibilityAttitudes}</h3>
+    //     <h3>{this.state.overAllScore}</h3>
+    //
+    //   <a href='https://www.glassdoor.com/index.htm'>powered by <img src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search' /></a>
+    //   </div>
+    // );
+//  }
 }
 export default Company;
