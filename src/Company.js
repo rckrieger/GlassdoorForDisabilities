@@ -4,27 +4,76 @@ import $ from 'jquery'
 
 class Company extends Component {
 
+
   componentDidMount() {
     const URL = "http://api.glassdoor.com/api/api.htm?t.p=225506&t.k=qyQd59zEqE&userip=0.0.0.0&useragent=&format=json&v=1&action=employers&pn=1&ps=1&q=microsoft";
     const NICKURL = "/api/company/all";
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", NICKURL, false);
-    xhr.send();
+    var myHeaders = new Headers();
+    var jayson;
+    console.log("first this", this);
+    var myInit = { method: 'GET',
+                   headers: myHeaders,
+                   mode: 'no-cors',
+                   cache: 'default' };
 
-    console.log(xhr.status);
-    console.log(xhr.statusText);
+    fetch(NICKURL, myInit).then(res => res.json()).then(json => {
+      console.log("second this",json);
+      this.setState({reviewArray: json[0].reviews,
+      companyName: json[0].name,
+      overAllScore: this.reviewSums(json[0].reviews),
+      });
+    });
+  };
+
+  qualitysum(str, reviewarr)
+  {
+    var total = 0;
+    if (reviewarr.length = 0){
+      return 0;
+    }
+    else{
+      reviewarr.forEach(function(review) {
+        review.ratings.forEach(function(rating){
+           if (str.valueOf() == rating.name.valueOf()){
+            total = total + rating.score;
+          }
+        })
+      })
+      return total/reviewarr.length;
+    }
   }
-  //this.setState({companyName: fetch(URL, {mode: 'no-cors'}).then(response => response.json())});
-  //    this.setState({companyName: companyJson['response'][0]['employers'][0].name});
-  // const companyJson = fetch(URL, {mode: 'no-cors'}).then(res => res.json()).then(json => {
-  //   this.setState({ companyName: json['response'][0]['employers'][0].name });
-  // });;
-//  const companyName = companyJson['response'][0]['employers'][0].name;
 
-  //  fetch(URL).then(res => console.log(res.json()));
+  tesums(arr){
+    if (arr.length = 0){
+      return 0;
+    }
+    else{
+      return (this.qualitysum("Sufficient Accommodations", arr) + this.qualitysum("Supportive Team", arr)
+       + this.qualitysum("Accepting manager", arr) + this.qualitysum("Good HR resources", arr))/4.0;
+    }
+  }
+  cgsums(arr){
+    if (arr.length = 0){
+      return 0;
+    }
+    else{
+      return (this.qualitysum("Career Counseling", arr) + this.qualitysum("Opportunities for career advancement", arr)
+       + this.qualitysum("Learning Opportunities", arr) + this.qualitysum("Mentorship opportunities for employees with disabilities", arr))/4.0;
+    }
+  }
+  aasums(arr){
+    if (arr.length = 0){
+      return 0;
+    }
+    else{
+      return (this.qualitysum("Company Leadership supportive of people with disabilities", arr) + this.qualitysum("Accessibility of Company’s products/services", arr)
+       + this.qualitysum("Company values accessibility", arr) + this.qualitysum("General diversity & inclusion in the company", arr))/4.0;
+    }
+  }
 
-  //companyName = JSON.parse()
-
+  reviewSums(arr){
+    return  (this.aasums(arr) + this.cgsums(arr) + this.tesums(arr))/3;
+  }
 
   constructor(companyid){
     super(companyid);
@@ -41,12 +90,15 @@ class Company extends Component {
       accessibilityAttitudes:0,
 
     };
+  //  this.componentDidMount = this.componentDidMount.bind(this);
+  //  this.render = this.render.bind(this);
   }
   //    {console.log(this.state.companyName)}
 
   render() {
     return (
       <div id="layout-content" className="layout-content-wrapper">
+      <h3>{this.state.companyName}</h3>
         <h3>{this.state.teamEnvironment}</h3>
         <h3>{this.state.careerGrowth}</h3>
         <h3>{this.state.accessibilityAttitudes}</h3>
