@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Addemployeereview from './Addemployeereview'
-
+import Addemployeereview from './Addemployeereview';
+import Company from './Company'
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">RampedUP</h1>
         </header>
-          <Addemployeereview/>
+          <Company/>
       </div>
     );
   }
