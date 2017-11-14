@@ -6,8 +6,10 @@ import { Navbar, NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 
-class Search extends Component {
+class CustomSearch extends Component {
+  componentDidMount() {
 
+  };
     constructor()
     {
       super();
@@ -20,11 +22,11 @@ class Search extends Component {
 
 
       return (
-        <div className="Search">
+        <div className="CustomSearch">
 
         </div>
       );
     }
 }
 
-export default Search;
+export default CustomSearch;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, NavItem, Nav, Grid, Row, Col } from "react-bootstrap";
 import Form from "react-jsonschema-form";
+import Modal from 'react-awesome-modal';
+
 
 const schema = {
   type: "object",
@@ -17,7 +19,7 @@ const schema = {
           "Physical (I.E Mobility)",
           "Speech (I.E. Stutter, lisp)",
           "Cognitive/Learning (IE ADHD, Depression, Dyslexia, Anxiety)",
-          "Neurological (IE epilepsy, Alzheimers)"
+          "Neurological (IE Epilepsy, Alzheimers)"
         ]
       },
       "uniqueItems": true
@@ -257,22 +259,31 @@ const log = (type) => console.log.bind(console, type);
 
 class Addemployeereview extends Component {
 
-  constructor(reviewid) {
-    super(reviewid);
-    //cal api here
-    this.props = {
-  //    detailsjson: props.person,
-    };
-  }
+
+  constructor(props) {
+          super(props);
+          this.state = {
+              visible : false
+          }
+      }
 
   render() {
+    var myHeaders = new Headers();
+    const NICKURL = "/api/review/add";
+    var reviewArray = [];
+
+    var mySentInit = { method: 'Post',
+                   headers: myHeaders,
+                   mode: 'no-cors',
+                   cache: 'default' };
+
     return (
-      <div>
-        <Form schema={schema}
-              onChange={log("changed")}
-              uiSchema={uiSchema}
-              onSubmit={log("submitted")}
-              onError={log("errors")} />
+      <div className="form" margin="100px">
+            <Form schema={schema}
+                  onChange={log("changed")}
+                  uiSchema={uiSchema}
+                  onSubmit={log("submitted")}
+                  onError={log("errors")} />
       </div>
     );
   }

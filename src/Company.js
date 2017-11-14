@@ -6,7 +6,6 @@ class Company extends Component {
 
 
   componentDidMount() {
-    const URL = "http://api.glassdoor.com/api/api.htm?t.p=225506&t.k=qyQd59zEqE&userip=0.0.0.0&useragent=&format=json&v=1&action=employers&pn=1&ps=1&q=microsoft";
     const NICKURL = "/api/company/all";
     var myHeaders = new Headers();
     var jayson;

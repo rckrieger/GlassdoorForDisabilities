@@ -21,7 +21,21 @@ class CompanyTable extends Component {
 
       return (
         <div className="table">
-
+        <thead>
+        <tr>
+          <th>{companyName}</th>
+          <th>{teamEnviorment}</th>
+          <th>{careerGrowth}</th>
+          <th>{accessibilityAttitudes}</th>
+          <th>{overAllScore}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td>john@example.com</td>
+          </tr>
         </div>
       );
     }
